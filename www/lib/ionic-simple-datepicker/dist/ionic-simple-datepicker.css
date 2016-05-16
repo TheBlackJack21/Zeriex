@@ -1,0 +1,80 @@
+/* ionic popover */
+
+.simple-datepicker-popover
+{
+  height: 350px;
+  width: 100%;
+
+  left: 0 !important;
+}
+
+/* datepicker */
+
+.simple-datepicker
+{
+
+}
+
+.simple-datepicker__month-picker
+{
+
+}
+
+.simple-datepicker__month
+{
+  padding-top: 5px;
+}
+
+.simple-datepicker__month h1
+{
+  font-weight: bold;
+  font-size: 16px;
+
+  text-align: center;
+}
+
+.simple-datepicker__calendar
+{
+  display: flex;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  justify-content: flex-start;
+  align-content: stretch;
+}
+
+.simple-datepicker__calendar__date, .simple-datepicker__calendar__date-header
+{
+  flex: 1;
+  flex-basis: 14.2857%;
+
+  max-width: 14.2857%;
+
+  padding: 5px;
+
+  border-bottom: 1px solid black;
+
+  font-size: 12px;
+
+  text-align: center;
+}
+
+.simple-datepicker__calendar__date-header
+{
+  font-weight: bold;
+}
+
+.simple-datepicker__calendar__date--not-current-month, .simple-datepicker__calendar__date--not-in-timeframe, .simple-datepicker__calendar__date--not-active
+{
+  color: #999;
+
+  border-bottom-color: #999;
+}
+
+.simple-datepicker__calendar__date--selected
+{
+  color: #fff;
+
+  background-color: blue;
+}

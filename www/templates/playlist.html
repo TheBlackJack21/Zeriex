@@ -1,0 +1,29 @@
+<ion-view view-title="Playlist" hide-back-button="true" cache-view="false">
+      <ion-nav-title>
+    	     {{title}}
+    	</ion-nav-title>
+      <ion-nav-buttons side="right">
+            <a class="button button-icon button-clear ion-ios-search" href="#/app/search"></a>
+     </ion-nav-buttons>
+     <ion-nav-buttons side="left">
+       <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+     </ion-nav-buttons>
+  <ion-content overflow-scroll="true">
+    <ion-scroll class="topscroll_view">
+    <div class="video_boxes">
+        <div class="rt">
+          <video  id='myvideo' poster="{{getImgPathcontent($index)}}" class='fullscreen_x' ng-src="{{MediaFiles | trusted}}" type="{{mediaType}}" controls autoplay></video>
+        </div>
+      </div>
+  </ion-scroll>
+  <ion-scroll class="centerpages_view">
+  <div class="list">
+    <a class="item item-thumbnail-left item-text-wrap" ng-repeat="item in enclosure_list" href="#/app/playlists/{{cate_id}}/{{index_id}}/{{$index}}" >
+      <img src="{{getImgPathcontent($index)}}">
+      <h2>{{title}}</h2>
+      <p class="scol">Path {{$index+1}} / {{enclosure_list_length}}</p>
+    </a>
+  </div>
+  </ion-scroll>
+  </ion-content>
+</ion-view>

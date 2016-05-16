@@ -1,0 +1,111 @@
+<ion-view view-title="" hide-back-button="true" cache-view="false">
+      <ion-nav-title>
+    	     ZERIEX
+    	</ion-nav-title>
+      <ion-nav-buttons side="right">
+            <a class="button button-icon button-clear ion-ios-refresh" ng-click="refreshData()"></a>
+       </ion-nav-buttons>
+     <ion-nav-buttons side="left">
+       <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+     </ion-nav-buttons>
+  <ion-content overflow-scroll="true">
+        <ion-scroll class="topscroll">
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true" options="options" show-pager="false">
+            <ion-slide ng-repeat="banner in playlists" repeat-done="repeatDone()">
+          			<a href="#/app/playlists/1/{{$index}}/0">
+          			<img img-cache ng-src="{{getImgPath($index)}}" onerror="this.src ='img/401.png';" class="covers">
+          			</a>
+      		  </ion-slide>
+        </ion-slide-box>
+        </ion-scroll>
+        <ion-scroll class="centerpages">
+        <ion-list>
+  			  <ion-item class="billing">
+  			   <div class="cateheader" >
+  			   <div class="cate_left">
+  			   <a href="#" class="whitecate">ซีรีย์ฝรั่ง</a></div>
+  			   <div class="cate_right"><a href="#/app/browse/{{cate.id}}"><i class="icon ion-ios-film-outline"></i></a></div>
+  			   </div>
+            			   <ion-scroll zooming = "true" direction = "x" class = "ionsclr">
+            				 <div class="paneview_item_o" style="width:{{getLength($index)}}px;">
+            					<div  class="square_box" ng-repeat="item in playlists">
+            						<div id="movie-{{item.content_id}}" class="item_movie">
+            						<a href="#/app/playlists/1/{{$index}}/0">
+            						<img img-cache ng-src="{{getImgPath($index)}}" onerror="this.src = 'img/404.png';" class="square"/>
+            						</a></div>
+            						<div class="title_small item-text-wrap">
+            						<a href="#/app/playlists/1/{{$index}}/0">{{item.title}}</a>
+            						</div>
+            					  </div>
+                        <!--ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore($index)" distance="10%"></ion-infinite-scroll-->
+            				</div>
+            				</ion-scroll>
+  			  </ion-item>
+          <ion-item class="billing">
+  			   <div class="cateheader" >
+  			   <div class="cate_left">
+  			   <a href="#" class="whitecate">ซีรีย์เกาหลี</a></div>
+  			   <div class="cate_right"><a href="#/app/browse/{{cate.id}}"><i class="icon ion-ios-film-outline"></i></a></div>
+  			   </div>
+            			   <ion-scroll zooming = "true" direction = "x" class = "ionsclr">
+            				 <div class="paneview_item_o" style="width:{{getLengthkorea($index)}}px;">
+            					<div  class="square_box" ng-repeat="kk in playlistskorea">
+            						<div id="movie-{{kk.content_id}}" class="item_movie">
+            						<a href="#/app/playlists/2/{{$index}}/0">
+            						<img img-cache ng-src="{{getImgPathkorea($index)}}" onerror="this.src = 'img/404.png';" class="square"/>
+            						</a></div>
+            						<div class="title_small item-text-wrap">
+            						<a href="#/app/playlists/2/{{$index}}/0">{{kk.title}}</a>
+            						</div>
+            					  </div>
+                        <!--ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore($index)" distance="10%"></ion-infinite-scroll-->
+            				</div>
+            				</ion-scroll>
+  			  </ion-item>
+          <ion-item class="billing">
+  			   <div class="cateheader" >
+  			   <div class="cate_left">
+  			   <a href="#" class="whitecate">ซีรีย์ญี่ปุ่น</a></div>
+  			   <div class="cate_right"><a href="#/app/browse/{{cate.id}}"><i class="icon ion-ios-film-outline"></i></a></div>
+  			   </div>
+            			   <ion-scroll zooming = "true" direction = "x" class = "ionsclr">
+            				 <div class="paneview_item_o" style="width:{{getLengthjapan($index)}}px;">
+            					<div  class="square_box" ng-repeat="jp in playlistsjapan">
+            						<div id="movie-{{kk.content_id}}" class="item_movie">
+            						<a href="#/app/playlists/3/{{$index}}/0">
+            						<img img-cache ng-src="{{getImgPathjapan($index)}}" onerror="this.src = 'img/404.png';" class="square"/>
+            						</a></div>
+            						<div class="title_small item-text-wrap">
+            						<a href="#/app/playlists/3/{{$index}}/0">{{jp.title}}</a>
+            						</div>
+            					  </div>
+                        <!--ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore($index)" distance="10%"></ion-infinite-scroll-->
+            				</div>
+            				</ion-scroll>
+  			  </ion-item>
+          <ion-item class="billing">
+  			   <div class="cateheader" >
+  			   <div class="cate_left">
+  			   <a href="#" class="whitecate">ซีรีย์จีน</a></div>
+  			   <div class="cate_right"><a href="#/app/browse/{{cate.id}}"><i class="icon ion-ios-film-outline"></i></a></div>
+  			   </div>
+            			   <ion-scroll zooming = "true" direction = "x" class = "ionsclr">
+            				 <div class="paneview_item_o" style="width:{{getLengthchina($index)}}px;">
+            					<div  class="square_box" ng-repeat="ch in playlistschina">
+            						<div id="movie-{{ch.content_id}}" class="item_movie">
+            						<a href="#/app/playlists/4/{{$index}}/0">
+            						<img img-cache ng-src="{{getImgPathchina($index)}}" onerror="this.src = 'img/404.png';" class="square"/>
+            						</a></div>
+            						<div class="title_small item-text-wrap">
+            						<a href="#/app/playlists/4/{{$index}}/0">{{ch.title}}</a>
+            						</div>
+            					  </div>
+                        <!--ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore($index)" distance="10%"></ion-infinite-scroll-->
+            				</div>
+            				</ion-scroll>
+  			  </ion-item>
+          <ion-infinite-scroll on-infinite="addMoreItem()" ng-if="categories.length > numberOfItemsToDisplay"></ion-infinite-scroll>
+  			</ion-list>
+        </ion-scroll>
+  </ion-content>
+</ion-view>
