@@ -22,4 +22,12 @@ $ionic platform add ios<br/>
 จากนั้น <br/>
 $ionic build android<br/>
 
+![alt tag](https://github.com/TheBlackJack21/Zeriex/blob/master/www/img/Screenshot_2016-05-16-14-56-56-69.png?raw=true)
+
+![alt tag](https://github.com/TheBlackJack21/Zeriex/blob/master/www/img/Screenshot_2016-05-16-14-57-10-99.png?raw=true)
+
+![alt tag](https://github.com/TheBlackJack21/Zeriex/blob/master/www/img/Screenshot_2016-05-16-14-58-04-31.png?raw=true)
+
+![alt tag](https://github.com/TheBlackJack21/Zeriex/blob/master/www/img/Screenshot_2016-05-16-15-51-06-79.png?raw=true)
+
 ดาวน์โหลดแอพพลิเคชันที่: https://drive.google.com/file/d/0B33xnUa0C4GKS3VmSE5uMGZ0U28/view?usp=sharing
