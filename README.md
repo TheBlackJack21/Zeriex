@@ -8,6 +8,11 @@ ionic framework with All TV Series Data from External resources on internet.
 4. ใช้ในการแบ่งปันและศึกษาการทำงานของการเก็บข้อมูลเท่านั้น<br/><br/>
 
 Install/ติดตั้ง <br/>
+ดาวน์โหลด NodeJS ติดตั้งลงเครื่อง
+<br/><br/>
+เปิด command prompt หรือ Terminal<br/>
+
+$npm install -g cordova ionic<br/>
 
 $ git clone https://github.com/TheBlackJack21/Zeriex.git<br/>
 $ cd Zeriex<br/>
@@ -15,7 +20,7 @@ $ ionic run android<br/>
 หรือ<br/>
 $ionic run ios<br/>
 <br/>
-Test on Device/ทดสอบบนอุปกรณ์
+Test on Device/ทดสอบบนอุปกรณ์<br/>
 $ionic platform add android<br/>
 หรือ<br/>
 $ionic platform add ios<br/>
