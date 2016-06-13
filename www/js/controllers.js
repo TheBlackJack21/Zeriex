@@ -148,7 +148,9 @@ angular.module('starter.controllers', [])
       setTimeout( function() {
             $ionicLoading.hide();
       }, 1000);
-      $scope.loadContent();
+      $timeout(function () {
+        $scope.loadContent();
+      }, 1000);
     });
 })
 
