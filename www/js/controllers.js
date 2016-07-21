@@ -24,27 +24,8 @@ angular.module('starter.controllers', [])
 })
 .controller('AppCtrl', function($scope,$ionicModal,$timeout,$ionicLoading,$http,$localStorage,xmlParser) {
   $scope.refreshData = function(){
-    $http.get("http://www.seriesubthai.co/category/usa-series/feed/").success(function (data) {
-        var x2js = new X2JS();
-        var jsonData = x2js.xml_str2json(data);
-        $localStorage.jsonData = jsonData;
-    });
-    $http.get("http://www.seriesubthai.co/category/korea-series/feed/").success(function (datakorea) {
-        var x2js = new X2JS();
-        var jsonDatakorea = x2js.xml_str2json(datakorea);
-        $localStorage.jsonDatakorea = jsonDatakorea;
-    });
-    $http.get("http://www.seriesubthai.co/category/japan-series/feed/").success(function (datajapan) {
-        var x2js = new X2JS();
-        var jsonDatajapan = x2js.xml_str2json(datajapan);
-        $localStorage.jsonDatajapan = jsonDatajapan;
-    });
-    $http.get("http://www.seriesubthai.co/category/chinese-series/feed/").success(function (datachina) {
-        var x2js = new X2JS();
-        var jsondatachina = x2js.xml_str2json(datachina);
-        $localStorage.jsonDatachina = jsondatachina;
-        $ionicLoading.hide();
-    });
+
+
   }
   $scope.$on('$ionicView.enter', function(e) {
       $ionicLoading.show({
@@ -66,70 +47,84 @@ angular.module('starter.controllers', [])
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady(){screen.lockOrientation('portrait');}
     $scope.loadContent = function(){
-      sources = $localStorage.jsonData;
-      korea = $localStorage.jsonDatakorea;
-      japan = $localStorage.jsonDatajapan;
-      china = $localStorage.jsonDatachina;
-      //console.log(JSON.stringify(sources));
-      $scope.playlists = sources.rss.channel.item;
-      $scope.getImgPath = function(index){
-        $scope.encoded = $scope.playlists[index].encoded.__cdata;
-        $scope.headParam = $scope.encoded.search("uploads/");
-        $scope.TailParam = $scope.encoded.search('" alt');
-        $scope.middleParams = "http://www.seriesubthai.co/wp-content/"+$scope.encoded.substring($scope.headParam, $scope.TailParam);
-        return $scope.middleParams;
-      }
-      $scope.getLength = function(){
-        $scope.row = $scope.playlists.length;
-        getRowCount = $scope.playlists.length;
-        $scope.newwidth = $scope.row*168;
-        return $scope.newwidth;
-      }
-
-      $scope.playlistskorea = korea.rss.channel.item;
-      $scope.getImgPathkorea = function(index){
-        $scope.encoded = $scope.playlistskorea[index].encoded.__cdata;
-        $scope.headParam = $scope.encoded.search("uploads/");
-        $scope.TailParam = $scope.encoded.search('" alt');
-        $scope.middleParams = "http://www.seriesubthai.co/wp-content/"+$scope.encoded.substring($scope.headParam, $scope.TailParam);
-        return $scope.middleParams;
-      }
-      $scope.getLengthkorea = function(){
-        $scope.row = $scope.playlistskorea.length;
-        getRowCount = $scope.playlistskorea.length;
-        $scope.newwidth = $scope.row*168;
-        return $scope.newwidth;
-      }
-
-      $scope.playlistsjapan = japan.rss.channel.item;
-      $scope.getImgPathjapan = function(index){
-        $scope.encoded = $scope.playlistsjapan[index].encoded.__cdata;
-        $scope.headParam = $scope.encoded.search("uploads/");
-        $scope.TailParam = $scope.encoded.search('" alt');
-        $scope.middleParams = "http://www.seriesubthai.co/wp-content/"+$scope.encoded.substring($scope.headParam, $scope.TailParam);
-        return $scope.middleParams;
-      }
-      $scope.getLengthjapan = function(){
-        $scope.row = $scope.playlistsjapan.length;
-        getRowCount = $scope.playlistsjapan.length;
-        $scope.newwidth = $scope.row*168;
-        return $scope.newwidth;
-      }
-
-      $scope.playlistschina = china.rss.channel.item;
-      $scope.getImgPathchina = function(index){
-        $scope.encoded = $scope.playlistschina[index].encoded.__cdata;
-        $scope.headParam = $scope.encoded.search("uploads/");
-        $scope.TailParam = $scope.encoded.search('" alt');
-        $scope.middleParams = "http://www.seriesubthai.co/wp-content/"+$scope.encoded.substring($scope.headParam, $scope.TailParam);
-        return $scope.middleParams;
-      }
-      $scope.getLengthchina = function(){
-        $scope.row = $scope.playlistschina.length;
-        getRowCount = $scope.playlistschina.length;
-        $scope.newwidth = $scope.row*168;
-        return $scope.newwidth;
-      }
+      $http.get("http://www.seriesubthai.co/category/usa-series/feed/").success(function (data) {
+          var x2js = new X2JS();
+          var jsonData = x2js.xml_str2json(data);
+          sources = jsonData;
+          console.log(sources);
+          $scope.playlists = sources.rss.channel.item;
+          $scope.getImgPath = function(index){
+            $scope.encoded = $scope.playlists[index].encoded.__cdata;
+            $scope.headParam = $scope.encoded.search("uploads/");
+            $scope.TailParam = $scope.encoded.search('" alt');
+            $scope.middleParams = "http://www.seriesubthai.co/wp-content/"+$scope.encoded.substring($scope.headParam, $scope.TailParam);
+            return $scope.middleParams;
+          }
+          $scope.getLength = function(){
+            $scope.row = $scope.playlists.length;
+            getRowCount = $scope.playlists.length;
+            $scope.newwidth = $scope.row*168;
+            return $scope.newwidth;
+          }
+      });
+      $http.get("http://www.seriesubthai.co/category/korea-series/feed/").success(function (datakorea) {
+          var x2js = new X2JS();
+          var jsonDatakorea = x2js.xml_str2json(datakorea);
+          korea = jsonDatakorea;
+          $scope.playlistskorea = korea.rss.channel.item;
+          $scope.getImgPathkorea = function(index){
+            $scope.encoded = $scope.playlistskorea[index].encoded.__cdata;
+            $scope.headParam = $scope.encoded.search("uploads/");
+            $scope.TailParam = $scope.encoded.search('" alt');
+            $scope.middleParams = "http://www.seriesubthai.co/wp-content/"+$scope.encoded.substring($scope.headParam, $scope.TailParam);
+            return $scope.middleParams;
+          }
+          $scope.getLengthkorea = function(){
+            $scope.row = $scope.playlistskorea.length;
+            getRowCount = $scope.playlistskorea.length;
+            $scope.newwidth = $scope.row*168;
+            return $scope.newwidth;
+          }
+      });
+      $http.get("http://www.seriesubthai.co/category/japan-series/feed/").success(function (datajapan) {
+          var x2js = new X2JS();
+          var jsonDatajapan = x2js.xml_str2json(datajapan);
+          japan = jsonDatajapan;
+          $scope.playlistsjapan = japan.rss.channel.item;
+          $scope.getImgPathjapan = function(index){
+            $scope.encoded = $scope.playlistsjapan[index].encoded.__cdata;
+            $scope.headParam = $scope.encoded.search("uploads/");
+            $scope.TailParam = $scope.encoded.search('" alt');
+            $scope.middleParams = "http://www.seriesubthai.co/wp-content/"+$scope.encoded.substring($scope.headParam, $scope.TailParam);
+            return $scope.middleParams;
+          }
+          $scope.getLengthjapan = function(){
+            $scope.row = $scope.playlistsjapan.length;
+            getRowCount = $scope.playlistsjapan.length;
+            $scope.newwidth = $scope.row*168;
+            return $scope.newwidth;
+          }
+      });
+      $http.get("http://www.seriesubthai.co/category/chinese-series/feed/").success(function (datachina) {
+          var x2js = new X2JS();
+          var jsondatachina = x2js.xml_str2json(datachina);
+          china = jsondatachina;
+          $scope.playlistschina = china.rss.channel.item;
+          $scope.getImgPathchina = function(index){
+            $scope.encoded = $scope.playlistschina[index].encoded.__cdata;
+            $scope.headParam = $scope.encoded.search("uploads/");
+            $scope.TailParam = $scope.encoded.search('" alt');
+            $scope.middleParams = "http://www.seriesubthai.co/wp-content/"+$scope.encoded.substring($scope.headParam, $scope.TailParam);
+            return $scope.middleParams;
+          }
+          $scope.getLengthchina = function(){
+            $scope.row = $scope.playlistschina.length;
+            getRowCount = $scope.playlistschina.length;
+            $scope.newwidth = $scope.row*168;
+            return $scope.newwidth;
+          }
+          $ionicLoading.hide();
+      });
 
     };
     $scope.options = {loop: true };
@@ -148,10 +143,8 @@ angular.module('starter.controllers', [])
       setTimeout( function() {
             $ionicLoading.hide();
       }, 1000);
-      $timeout(function () {
-        $scope.loadContent();
-      }, 1000);
     });
+    $scope.loadContent();
 })
 
 .controller('ContentCtrl', function($scope,$stateParams,$http,$sce,$stateParams,$state,$localStorage,$ionicHistory,$timeout,$ionicLoading,$ionicNavBarDelegate) {
@@ -196,7 +189,7 @@ angular.module('starter.controllers', [])
             $ionicLoading.hide();
       }, 1000);
       if($scope.cate_id == 1){
-        $scope.uri = $localStorage.jsonData;
+        $scope.uri = $localStorage.jsonData_en;
       }else if($scope.cate_id == 2){
         $scope.uri = $localStorage.jsonDatakorea;
       }else if($scope.cate_id == 3){
